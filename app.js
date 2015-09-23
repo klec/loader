@@ -3,7 +3,7 @@
  */
 var length = 30;
 var t=10;
-var pointSize = 2;
+var pointSize = 1;
 var radius = 10;
 
 function reDraw(){
