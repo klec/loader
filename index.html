@@ -5,26 +5,56 @@
     <title></title>
 </head>
 <style>
-    body {
-        background-color: black;
+    #content {
+        position: relative;
+        float: right;
+        width:  calc(100vw - 200px);
+    }
+    #loading {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: calc(100% - 60px);
+        height: calc(100% - 60px);
+        left:30px;
+        top:30px;
+        position: absolute;
     }
     svg{
         position: absolute;
         display: block;
-        background-color: black;
         left:50%;
         top: 50%;
-        margin: -10px 0px 0px -10px;
-        width:  50px;
-        height: 50px;
+        transform:translateX(-50%) translateY(-50%);
     }
-    circle {
-        stroke-width: 0px;
+    #settings{
+        float: left;
+        width: 100px;
     }
 </style>
 <body>
-<svg id="loader">
-</svg>
+    <div id="settings">
+        <p>Size:<input type="number" id="size" value="10"></p>
+        <p>Width:<input type="number" id="width"  value="20"></p>
+        <p><button onclick="apply()">Apply</button></p>
+    </div>
+    <div id="content">
+        <div id="lorem"></div>
+        <div id="loading">
+            <svg class="loader">
+                <filter id="blur1">
+                    <feGaussianBlur stdDeviation="1" />
+                </filter>
+            </svg>
+        </div>
+    </div>
 </body>
-<script src="app.js"></script>
+<script src="lorem.js"></script>
+<script src="loader.js"></script>
+<script src="settings.js"></script>
+<script>
+    var lorem = new Lorem;
+    lorem.type = Lorem.TEXT;
+    lorem.query = '2p';
+    lorem.createLorem(document.getElementById('lorem'));
+    var loader = new Loader({width: 1.6});
+</script>
 </html>
