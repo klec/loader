@@ -48,11 +48,6 @@ Loader.prototype = {
             for (var i = 0; i < this.options.length; i++) {
                 circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                 var alfa = Math.round(Math.sin((i - 4) / 2.4) * 120 + 120);
-                //var alfa = Math.round(Math.sin((i - 12) / 2.4) * 120 + 120); //negative
-                //r = Math.round(Math.sin((i-5)/2.4)*100+100);
-                //g = Math.round(Math.sin((i)/2.4)*100+100);
-                //b = Math.round(Math.sin((i+5)/2.4)*100+100);
-                //circle.setAttribute("fill", "rgb("+r+", "+g+", "+b+")");
                 circle.setAttribute("fill", "rgb(" + alfa + ", " + alfa + ", " + alfa + ")");
                 circle.setAttribute("r", this.options.radius/10*this.options.pointSize);
                 circle.setAttribute("id", "circle" + l + i);//filter="url(#f1)"
