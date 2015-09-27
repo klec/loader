@@ -44,7 +44,7 @@ Loader.prototype = {
 
         var loaders = document.getElementsByClassName("loader");
         for (var l = 0; l < loaders.length; l++) {
-            var bgcircle = this.createCircle(0, this.options.radius * 2, "loaderbg");
+            var bgcircle = this.createCircle(0, this.options.radius * 2, "loaderbg"+l);
             bgcircle.setAttribute("cx", "50%");
             bgcircle.setAttribute("cy", "50%");
             loaders[l].setAttribute("width", this.options.radius * 5);

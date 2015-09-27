@@ -12,7 +12,7 @@ function apply(){
         loaders[l].setAttribute("height", size*5);
         for (var i = 0; i<loaders[l].childNodes.length; i++) {
             if (loaders[l].childNodes[i].tagName == "circle") {
-                if (loaders[l].childNodes[i].id == "loaderbg") {
+                if (loaders[l].childNodes[i].id.substr(0,8) == "loaderbg") {
                     loaders[l].childNodes[i].setAttribute("r", size * 2);
                 } else {
                     loaders[l].childNodes[i].setAttribute("r", size / 10 * width);
