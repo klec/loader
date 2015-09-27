@@ -54,7 +54,7 @@ Loader.prototype = {
                 //b = Math.round(Math.sin((i+5)/2.4)*100+100);
                 //circle.setAttribute("fill", "rgb("+r+", "+g+", "+b+")");
                 circle.setAttribute("fill", "rgb(" + alfa + ", " + alfa + ", " + alfa + ")");
-                circle.setAttribute("r", this.options.pointSize);
+                circle.setAttribute("r", this.options.radius/10*this.options.pointSize);
                 circle.setAttribute("id", "circle" + l + i);//filter="url(#f1)"
                 circle.setAttribute("filter", "url(#blur1)");
                 loaders[l].appendChild(circle);
