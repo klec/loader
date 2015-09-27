@@ -32,9 +32,8 @@
 </style>
 <body>
     <div id="settings">
-        <p>Size:<input type="number" id="size" value="10"></p>
-        <p>Width:<input type="number" id="width"  value="20"></p>
-        <p><button onclick="apply()">Apply</button></p>
+        <p>Size:<input type="number" id="size" value="10" onclick="apply()" onchange="apply()"></p>
+        <p>Width:<input type="number" id="width"  value="20" onclick="apply()" onchange="apply()"></p>
     </div>
     <div id="content">
         <div id="lorem"></div>
@@ -55,6 +54,6 @@
     lorem.type = Lorem.TEXT;
     lorem.query = '2p';
     lorem.createLorem(document.getElementById('lorem'));
-    var loader = new Loader({width: 1.6});
+    var loader = new Loader({width: 2});
 </script>
 </html>
