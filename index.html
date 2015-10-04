@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <script src="loader.js"></script>
 </head>
 <style>
+    body {
+        font-family: sans-serif;
+    }
     #content {
         position: relative;
         float: right;
-        width:  calc(100vw - 200px);
+        width:  calc(100vw - 430px);
+        background-color: whitesmoke;
+        border-radius: 20px;
+        padding: 0px 40px;
+        margin: 10px;
     }
     #loading {
         background-color: rgba(0, 0, 0, 0.5);
@@ -18,42 +26,61 @@
         top:30px;
         position: absolute;
     }
-    svg{
-        position: absolute;
-        display: block;
-        left:50%;
-        top: 50%;
-        transform:translateX(-50%) translateY(-50%);
-    }
     #settings{
         float: left;
-        width: 100px;
+        background-color: whitesmoke;
+        width: 250px;
+        border-radius: 20px;
+        padding: 0px 20px;
+        margin: 10px;
     }
 </style>
 <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.4&appId=1504858449831385";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <div id="settings">
-        <p>Size:<input type="number" id="size" value="10" onclick="apply()" onchange="apply()"></p>
-        <p>Width:<input type="number" id="width"  value="20" onclick="apply()" onchange="apply()"></p>
+        <H2>Loader configuration</H2>
+        <p>Size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="size" value="10" onclick="apply()" onchange="apply()"></p>
+        <p>Width:&nbsp;&nbsp;&nbsp;<input type="number" id="width"  value="20" onclick="apply()" onchange="apply()"></p>
+        <p>Download <a href="loader.js">loader.js</a></p>
+        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/facebook">
+            <a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+        </div>
+        </div>
     </div>
     <div id="content">
-        <div id="lorem"></div>
+        <H2>Loader view</H2>
+        <div id="lorem">
+            <p>
+            Для установки этого лоадера вам нужно:
+            <ol>
+                <li>загрузить <a href="loader.js">loader.js</a></li>
+                <li>добавить его на свою страницу &lt;script src=&quot;loader.js&quot;&gt;&lt;/script&gt;</li>
+                <li>заменить стандартную картинку лоадера например &lt;img srg=&quot;/path/to/loader.gif&quot;&gt; на следующий тег &lt;svg class=&quot;loader&quot; style=&quot;position: absolute; display: block; left: 50%; top:50%; transform: translateX(-50%) translateY(-50%);&quot;&gt;&lt;/svg&gt;</li>
+                <li>по желанию стиль SVG можете вынести в отдельный файл.</li>
+            </ol>
+            Загрузчиков на странице может быть несколько.
+            </p><p>
+            To install this loader you need to:
+            <ol>
+                <li>download <a href="loader.js">loader.js</a></li>
+                <li>add it to your page &lt;script src=&quot;loader.js&quot;&gt;&lt;/script&gt;</li>
+                <li>replace common loader image &lt;img srg=&quot;/path/to/loader.gif&quot;&gt; by this tag &lt;svg class=&quot;loader&quot; style=&quot;position: absolute; display: block; left: 50%; top:50%; transform: translateX(-50%) translateY(-50%);&quot;&gt;&lt;/svg&gt;</li>
+                <li>if want to, you can move style of SVG into separate file</li>
+            </ol>
+            The loaders can be added few times on a single page
+            </p>
+        </div>
         <div id="loading">
-            <svg class="loader">
-                <filter id="blur1">
-                    <feGaussianBlur stdDeviation="1" />
-                </filter>
-            </svg>
+            <svg class="loader" style="position: absolute; display: block; left: 50%; top:50%; transform: translateX(-50%) translateY(-50%);"></svg>
         </div>
     </div>
 </body>
-<script src="lorem.js"></script>
-<script src="loader.js"></script>
 <script src="settings.js"></script>
-<script>
-    var lorem = new Lorem;
-    lorem.type = Lorem.TEXT;
-    lorem.query = '2p';
-    lorem.createLorem(document.getElementById('lorem'));
-    var loader = new Loader({width: 2});
-</script>
 </html>

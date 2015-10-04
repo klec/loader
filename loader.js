@@ -36,13 +36,20 @@ Loader.prototype = {
         circle.setAttribute("fill", "rgb(" + alfa + ", " + alfa + ", " + alfa + ")");
         circle.setAttribute("r", radius);
         circle.setAttribute("id", id);//filter="url(#f1)"
-        circle.setAttribute("filter", "url(#blur1)");
+        circle.setAttribute("filter", "url(#blur)");
         return circle;
     },
 
     init: function () {
-
         var loaders = document.getElementsByClassName("loader");
+        var filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+        filter.setAttribute("id","blur");
+        var gaussianFilter = document.createElementNS("http://www.w3.org/2000/svg", "feGaussianBlur");
+        gaussianFilter.setAttribute("in","SourceGraphic");
+        gaussianFilter.setAttribute("stdDeviation","1");
+        filter.appendChild(gaussianFilter);
+        loaders[0].appendChild(filter);
+
         for (var l = 0; l < loaders.length; l++) {
             var bgcircle = this.createCircle(0, this.options.radius * 2, "loaderbg"+l);
             bgcircle.setAttribute("cx", "50%");
@@ -61,6 +68,10 @@ Loader.prototype = {
         this.interval = setInterval(this.reDraw.bind(this), 40);
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    window.loader = new Loader({width: 2});
+});
 
 
 
